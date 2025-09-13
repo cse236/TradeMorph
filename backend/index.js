@@ -18,6 +18,12 @@ app.get("/",(req,res)=>{
     res.json({message : "working api call ..."});
 })
 
+
+//trade routes
+const tradesRouter = require("./routes/trades");
+app.use("/api/trades",tradesRouter);
+
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT,()=>{
