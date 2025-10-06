@@ -10,7 +10,7 @@ router.get("/",async(req , res)=>{
             const plpercent = ((trade.sellPrice - trade.buyPrice)/trade.buyPrice)*100;
             return{
                 ...trade.toObject(),
-                plpercent:plpercent.toFixed(2)//added new field called plprecent having value tile 2 decimal points ex 8.22
+                plpercent:plpercent.toFixed(2)//added new field called plprecent having value  2 decimal points ex 8.22
             };
         });
         res.json(newTrades);

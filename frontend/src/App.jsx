@@ -1,11 +1,11 @@
 import TradeTable from './components/TradeTable';
+import ErrorPage from "./pages/ErrorPage";
 
 function App() {
   return (
-    <div style={{ textAlign: "center", padding: "20px" }}>
-      <h1>TradeMorph — Dummy Trade Table</h1>
-      <TradeTable />
-    </div>
+    <>
+    <ErrorPage/>
+    </>
   );
 }
 
