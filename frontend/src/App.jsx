@@ -1,10 +1,13 @@
 import TradeTable from './components/TradeTable';
-import ErrorPage from "./pages/ErrorPage";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import HomePage from"./pages/HomePage/HomePage";
+
 
 function App() {
   return (
     <>
-    <ErrorPage/>
+    <HomePage/>
+    
     </>
   );
 }

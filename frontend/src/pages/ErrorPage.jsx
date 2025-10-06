@@ -1,8 +1,10 @@
 import React from "react";
 import "../Styling/ErrorPage.css";
 import Roboimg from "../assets/Error-robot.png";
+import {Link ,useNavigate}from "react-router-dom";
 
 const ErrorPage = () => {
+    const navigate = useNavigate();
   return (
     <div className="error-container">
       <div className="error-content">
@@ -25,9 +27,9 @@ const ErrorPage = () => {
           </button>
           <button
             className="back-btn"
-            onClick={() => (window.location.href = "/dashboard")}
+            onClick={() => navigate("/")}
           >
-            Back to Dashboard
+            Back to Home
           </button>
         </div>
       </div>
