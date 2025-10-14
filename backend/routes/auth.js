@@ -40,14 +40,21 @@ router.post("/login", async (req, res) => {
 });
 
 // Verify token
-router.get("/verify", (req, res) => {
+router.get("/verify", async (req, res) => {
   const token = req.headers["authorization"];
   if (!token) return res.status(401).json({ status: false, message: "No token provided" });
 
-  jwt.verify(token, JWT_SECRET, (err, decoded) => {
-    if (err) return res.status(401).json({ status: false, message: "Token is invalid" });
-    res.json({ status: true, userId: decoded.id });
-  });
+ try {
+    const decoded = jwt.verify(token, JWT_SECRET);
+    const user = await User.findById(decoded.id).select("username email"); // Fetch user details
+
+    if (!user)
+      return res.status(404).json({ status: false, message: "User not found" });
+
+    res.json({ status: true, user }); // send back user info
+  } catch (err) {
+    res.status(401).json({ status: false, message: "Token invalid or expired" });
+  }
 });
 
 module.exports = router;

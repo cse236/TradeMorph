@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import "../../public/CSS/Login.css";
 
 export default function Signup() {
-  const [form, setForm] = useState({ username: "", email: "", password: "" });
+  const [form, setForm] = useState({ 
+    username: "", 
+    email: "",
+    password: "" 
+  });
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
@@ -14,22 +19,67 @@ export default function Signup() {
     try {
       await axios.post("http://localhost:5000/auth/signup", form);
       alert("Signup successful!");
-      navigate("/login");
+      navigate("/dashboard");
     } catch (err) {
       setError(err.response.data.message);
     }
   };
 
   return (
-    <div>
-      <h2>Signup</h2>
-      {error && <p>{error}</p>}
-      <form onSubmit={handleSubmit}>
-        <input type="text" name="username" placeholder="Username" onChange={handleChange} required />
-        <input type="email" name="email" placeholder="Email" onChange={handleChange} required />
-        <input type="password" name="password" placeholder="Password" onChange={handleChange} required />
-        <button type="submit">Signup</button>
-      </form>
+   <div className="login-page">
+      <div className="login-container">
+        <div className="left">
+          <div className="overlay"></div>
+          <div className="logo">TradeMorph</div>
+        </div>
+
+        <div className="right">
+          <h2>Create an Account</h2>
+          <form onSubmit={handleSubmit}>
+            <div className="input-box">
+              <input
+                type="text"
+                name="username"
+                placeholder="Username"
+                value={form.username}
+                onChange={handleChange}
+                required
+              />
+            </div>
+
+            <div className="input-box">
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                value={form.email}
+                onChange={handleChange}
+                required
+              />
+            </div>
+
+            <div className="input-box">
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                value={form.password}
+                onChange={handleChange}
+                required
+              />
+            </div>
+
+            <button type="submit" className="btn">Sign Up</button>
+
+            {error && <p className="error">{error}</p>}
+          </form>
+
+          <div className="signup">
+            Already have an account?{" "}
+            <a href="/login">Login</a>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
