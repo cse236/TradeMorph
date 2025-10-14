@@ -11,6 +11,7 @@ import Signup from "./components/Signup.jsx";
 import Login from "./components/Login.jsx";
 import Home from "./components/Home.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
+import TradeUpload from "./components/TradeUpload.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -21,6 +22,7 @@ createRoot(document.getElementById("root")).render(
         <Route path="/signup" element={<Signup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/tradeupload" element={<TradeUpload/>} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </BrowserRouter>

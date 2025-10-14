@@ -35,8 +35,19 @@ router.post("/",upload.single("file"),(req,res)=>{
     })
     .on("end",async()=>{
     try{
-        await Trade.insertMany(results);
-        res.json({message:"Trades uploaded successfully",count:results.length});
+       const savedTrades =  await Trade.insertMany(results);
+
+       //map the saved Trades to match frontend table
+        const tradesForFrontend = savedTrades.map((t) => ({
+          symbol: t.symbol,
+          entryPrice: t.buyPrice,
+          exitPrice: t.sellPrice,
+          quantity: t.qty,
+          date: t.entryDate.toISOString().split("T")[0], // format date
+        }));
+
+        res.json({ trades: tradesForFrontend });
+
 
     }catch(err){
         res.status(500).json({error:err.message});

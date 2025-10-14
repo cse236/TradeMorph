@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+
 function Dashboard() {
 
     const [user, setUser] = useState(null);
@@ -27,6 +28,7 @@ function Dashboard() {
     <div>
        
       {user ? <h2>Welcome, your ID: {user.username}</h2> : <p>Loading...</p>}
+      <button onClick={()=>{navigate("/tradeupload")}}>upload csv</button>
       <button onClick={() => { localStorage.removeItem("token"); navigate("/login"); }}>Logout</button>
     </div>
     </> );
