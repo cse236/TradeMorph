@@ -1,17 +1,26 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import {BrowserRouter,Routes,Route} from "react-router-dom";
-import './index.css'
-import App from './App.jsx'
+// src/main.jsx
+import { StrictMode } from "react";
+import { createRoot } from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./index.css";
+
+import App from "./App.jsx";
 import ErrorPage from "./pages/ErrorPage.jsx";
-import HomePage from "./pages/HomePage/HomePage.jsx";
 
-createRoot(document.getElementById('root')).render(
-  <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<HomePage/>}/>
-      <Route path="*" element={<ErrorPage/>}/>
+import Signup from "./components/Signup.jsx";
+import Login from "./components/Login.jsx";
+import Home from "./components/Home.jsx";
 
-    </Routes>
-  </BrowserRouter>
-)
+createRoot(document.getElementById("root")).render(
+  <StrictMode>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="*" element={<ErrorPage />} />
+      </Routes>
+    </BrowserRouter>
+  </StrictMode>
+);
