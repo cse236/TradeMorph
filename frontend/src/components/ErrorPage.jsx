@@ -1,5 +1,5 @@
 import React from "react";
-import "../Styling/ErrorPage.css";
+import "../css/ErrorPage.css";
 import Roboimg from "../assets/Error-robot.png";
 import {Link ,useNavigate}from "react-router-dom";
 
@@ -25,8 +25,6 @@ const ErrorPage = () => {
           <button className="try-again-btn" onClick={() => window.location.reload()}>
             Try Again
           </button>
-
-         
           <button
             className="back-btn"
             onClick={() => navigate("/")}

@@ -22,3 +22,17 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Node modules
+node_modules/
+
+
+
+# OS / IDE
+.vscode/
+.DS_Store
+Thumbs.db
+
+# OneDrive temp files
+~$*
+

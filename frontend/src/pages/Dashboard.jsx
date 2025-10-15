@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../components/Navbar.jsx";
+
 
 
 function Dashboard() {
@@ -26,10 +28,9 @@ function Dashboard() {
 
     return ( <>
     <div>
-       
-      {user ? <h2>Welcome, your ID: {user.username}</h2> : <p>Loading...</p>}
-      <button onClick={()=>{navigate("/tradeupload")}}>upload csv</button>
-      <button onClick={() => { localStorage.removeItem("token"); navigate("/login"); }}>Logout</button>
+       <Navbar/>
+      {user ? <h2>Welcome,  {user.username}</h2> : <p>Loading...</p>}
+     
     </div>
     </> );
 }
