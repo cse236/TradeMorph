@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(cors());
 
 // --- 1. DATABASE CONNECTION ---
-const MONGO_URI = "mongodb+srv://omkarshirsath28_db_user:8XD2hsJdwqmMRLBd@trademorph.cuktris.mongodb.net/trademorph?retryWrites=true&w=majority&appName=TradeMorph";
+const MONGO_URI = " use the mongodb connections string here ";
 
 mongoose.connect(MONGO_URI)
   .then(() => console.log("✅ MongoDB Connected"))
