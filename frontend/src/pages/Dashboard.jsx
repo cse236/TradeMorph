@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar.jsx";
+import MarketBehavior from "../components/MarketBehavior.jsx";
+
 
 
 
@@ -28,9 +30,18 @@ function Dashboard() {
 
     return ( <>
     <div>
-       <Navbar/>
-      {user ? <h2>Welcome,  {user.username}</h2> : <p>Loading...</p>}
-     
+      <Navbar />
+
+      {user ? (
+        <>
+          <h2>Welcome, {user.username}</h2>
+
+          {/*  ML MODEL USED HERE */}
+          <MarketBehavior />
+        </>
+      ) : (
+        <p>Loading...</p>
+      )}
     </div>
     </> );
 }
